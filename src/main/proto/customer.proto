@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+package com.sh.proto;
+
+option java_package = "com.sh";
+option java_outer_classname = "Protos";
+
+
+message Customer {
+    int32 id = 1;
+    string firstName = 2;
+    string lastName = 3;
+    string legalEntityCode = 10;
+    string legalEntityCode1 = 11;
+    string legalEntityCode2 = 12;
+    string legalEntityCode3 = 13;
+    string legalEntityCode4 = 14;
+    string legalEntityCode5 = 15;
+    string legalEntityCode6 = 16;
+    string legalEntityCode7 = 17;
+    string legalEntityCode8 = 18;
+    string legalEntityCode9 = 19;
+    string legalEntityCodeA = 20;
+    string legalEntityCodeB = 21;
+    string legalEntityCodeC = 22;
+
+    enum EmailType {
+        PRIVATE = 0;
+        PROFESSIONAL = 1;
+    }
+
+    message EmailAddress {
+        string email = 1;
+        EmailType type = 2;
+    }
+
+    repeated EmailAddress email = 5;
+}
+
+message Organization {
+    string name = 1;
+    repeated Customer customer = 2;
+}
+
+message CustomerList {
+    repeated Customer customer = 1;
+}
+
+message Error {
+    string code = 1;
+    string message = 2;
+}
+
+message CustomerResult {
+    oneof resultOrError {
+        Customer result = 1;
+        Error error = 2;
+    }
+}
+
+message CustomerListResult {
+    oneof resultOrError {
+        CustomerList result = 1;
+        Error error = 2;
+    }
+}
