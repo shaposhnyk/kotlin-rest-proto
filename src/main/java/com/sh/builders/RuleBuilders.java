@@ -1,5 +1,6 @@
 package com.sh.builders;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Objects;
@@ -86,11 +87,13 @@ public class RuleBuilders {
     B thisBuilder();
 
     /**
-     * @param value - single value to be returned when condition meets
+     * Convenience method
+     *
+     * @param values - values to be returned when condition meets
      * @return builds a rule for given values and current condition
      */
-    default Rule<T, R> then(R value) {
-      return then(Collections.singleton(value));
+    default Rule<T, R> then(R... values) {
+      return then(Arrays.asList(values));
     }
   }
 
